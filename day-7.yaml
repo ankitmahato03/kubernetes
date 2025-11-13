@@ -1,0 +1,15 @@
+# This is a Simple pod YAML file for Day 7 configuration
+
+apiversion: v1
+kind: Pod
+metadata:
+  name: nginx-pod
+  labels:
+    env: demo-app
+    type: frontend
+spec:
+  containers:
+    - name: nginx-container
+      image: nginx:latest
+      ports:
+        - containerPort: 80
