@@ -1,0 +1,26 @@
+# Deployment configuration for Nginx pods
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    env: demo
+
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      env: demo-app
+      type: frontend
+  template:
+    metadata:
+      name: nginx-pod
+      labels:
+        env: demo-app
+        type: frontend
+    spec:
+      containers:
+        - name: nginx-container
+          image: nginx:latest
+          ports:
+            - containerPort: 80
